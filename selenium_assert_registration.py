@@ -1,8 +1,7 @@
 from selenium import webdriver
 import time
 
-try: 
-    link = "http://suninjuly.github.io/registration2.html"
+def registration_form_check(link):
     browser = webdriver.Chrome()
     browser.get(link)
     
@@ -20,9 +19,6 @@ try:
     
     welcome_text_elt = browser.find_element_by_tag_name("h1")
     welcome_text = welcome_text_elt.text
-
-    assert "Congratulations! You have successfully registered!" == welcome_text
-
-finally:
-    time.sleep(10)
+    
     browser.quit()
+    return welcome_text
