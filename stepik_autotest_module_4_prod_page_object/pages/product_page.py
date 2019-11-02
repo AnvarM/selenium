@@ -32,3 +32,11 @@ class ProductPage(BasePage):
         template = self.get_price()
         result = self.get_price_basket()
         assert template == result, "Should be {}, but got {}".format(template, result)
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def success_message_is_disapeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
